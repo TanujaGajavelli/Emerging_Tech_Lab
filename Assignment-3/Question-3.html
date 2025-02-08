@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function calcFact(n,display){
+        let f=1;
+        for(let i=1;i<=n;i++){
+            f*=i;
+        }
+        display(f);
+    }
+    function display(fact){
+        console.log(fact);
+    }
+    calcFact(5,display);
+</script>
+</html>

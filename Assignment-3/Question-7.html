@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    products = [
+    { name: "Smartphone", price: 15000, rating: 4.5, category: ["Electronics", "Mobile", "Gadget"] },
+    { name: "Laptop", price: 50000, rating: 4.7, category: ["Electronics", "Computer", "Gadget"] },
+    { name: "Headphones", price: 2000, rating: 4.0, category: ["Electronics", "Accessories"] },
+    { name: "Shoes", price: 3000, rating: 4.3, category: ["Fashion", "Footwear"] },
+    { name: "Watch", price: 3500, rating: 4.2, category: ["Fashion", "Accessories"] },
+    { name: "Washing Machine", price: 25000, rating: 4.6, category: ["Home Appliances", "Electronics"] },
+    { name: "Refrigerator", price: 35000, rating: 4.4, category: ["Home Appliances", "Electronics"] },
+    { name: "Table Lamp", price: 1000, rating: 3.8, category: ["Home Decor", "Furniture"] },
+    ];
+    //Displaying details
+    products.forEach(ele => {
+        // console.log(`A ${ele.name} costs Rs ${ele.price} and has a rating of ${ele.rating}`);
+    });
+
+    //Creating list of product names
+    let names=products.map(ele=>ele.name)
+    // console.log(names);
+
+    //Creating array of electronics products
+    let electronics=products.filter(ele=>ele.category.includes('Electronics'))
+    // console.log(electronics);
+    
+    //Product with highest price
+    let price=Math.max(...products.map(ele=>ele.price))
+    let prod=products.filter(ele=>ele.price===price)[0].name
+    // console.log(`The product with highest price is ${prod}`);
+
+    //finding average rating
+    let avg=products.reduce((sum,ele)=>sum+ele.rating,0)/products.length
+    // console.log(`The average of all products is ${avg}`);
+    
+    //products below 10000
+    let prods=products.filter(ele=>ele.price<10000)
+    console.log(prods);
+    
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!--Name-Gajavelli Tanuja Sai SIC-22BCSI56-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="btnclick"></div>
+</body>
+<script>
+    let para=document.createElement("p");
+    count=0;
+    para.innerHTML="You have clicked the button <span>"+count+"</span> times";
+    let btnclick=document.getElementById("btnclick");
+    btnclick.appendChild(para);
+    let btn=document.createElement("button");
+    btn.innerText="Click";
+    btn.onclick=function(){
+        count+=1;
+        para.innerHTML="You have clicked the button <span>"+count+"</span> times";
+    }
+    btnclick.appendChild(btn);
+</script>
+</html>

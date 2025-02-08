@@ -1,0 +1,60 @@
+<!--Name-Gajavelli Tanuja Sai SIC-22BCSI56-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <div id="studs"></div>
+</body>
+<script>
+    let students=[{roll:"1",name:"Tanuja",mobile:"9736282748",email:"tanuja@gmail.com"},
+    {roll:"2",name:"Swapnil",mobile:"2317346786",email:"swapnil@gmail.com"},
+    {roll:"3",name:"Adyasha",mobile:"3453678654",email:"adyasha@gmail.com"},
+    {roll:"4",name:"Nabaneeta",mobile:"4545322146",email:"naba@gmail.com"},
+    {roll:"5",name:"Bhanu",mobile:"7646843568",email:"bhanu@gmail.com"},
+    {roll:"6",name:"Swathi",mobile:"7653678654",email:"swathi@gmail.com"},
+    {roll:"7",name:"Yamuna",mobile:"9097643278",email:"yamu@gmail.com"},
+    {roll:"8",name:"Mani Deepak",mobile:"7643578769",email:"deepu@gmail.com"},
+    {roll:"9",name:"Pratyusha",mobile:"7543757894",email:"pakshi@gmail.com"},
+    {roll:"10",name:"Veni",mobile:"6789765780",email:"veni@gmail.com"}
+    ];
+    
+    let keys=["Roll","Name","Mobile","Email"];
+
+    let studs=document.getElementById("studs");
+    let table=document.createElement("table");
+    let table_row=document.createElement("tr");
+    for(let i=0;i<4;i++){
+        let ele=document.createElement("th");
+        ele.innerHTML=keys[i];
+        table_row.appendChild(ele);
+    }
+    table.appendChild(table_row);
+    for(i=0;i<students.length;i++){
+        let row=document.createElement("tr");
+        let roll=document.createElement("td");
+        roll.innerText=students[i].roll;
+        let name=document.createElement("td");
+        name.innerText=students[i].name;
+        let mobile=document.createElement("td");
+        mobile.innerText=students[i].mobile;
+        let email=document.createElement("td");
+        email.innerText=students[i].email;
+        row.appendChild(roll);
+        row.appendChild(name);
+        row.appendChild(mobile);
+        row.appendChild(email);
+        table.appendChild(row);
+    }
+    studs.appendChild(table);
+</script>
+</html>

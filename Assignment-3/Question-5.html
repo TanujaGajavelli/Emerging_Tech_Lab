@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    carBrands=["Toyota","Ford","BMW","Mercedes-Benz","Honda","Audi","Tata","Tesla","Mahindra","Volkswagen"];
+    //displaying array
+    function display(cars){
+        cars.forEach(car => {
+            console.log(car);
+        });
+    }
+    // display(carBrands)
+
+    //adding car to array
+    carBrands.push("Tata")
+    // display(carBrands)
+
+    //removing last car
+    carBrands.pop()
+    // display(carBrands)
+
+    //if array has Tata
+    // console.log(carBrands.includes("Tata"));
+
+    //sorting cars
+    carBrands.sort()
+    // display(carBrands)
+
+    //copy of array
+    carsCopy=[...carBrands]
+    display(carsCopy)
+    
+</script>
+</html>

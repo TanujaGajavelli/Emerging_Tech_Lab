@@ -1,0 +1,42 @@
+<!--Name-Gajavelli Tanuja Sai SIC-22BCSI56-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #para{
+            height: 300px;
+            width:500px;
+            margin: auto;
+            border: 2px solid black;
+        }
+        #buttons{
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="para">
+    </div>
+    <div id="buttons"></div>
+</body>
+<script>
+    let colours=["black","blue","pink","yellow","red","green"];
+    let buttons=document.getElementById("buttons")
+    let para=document.getElementById("para");
+    for(let i=0;i<colours.length;i++){
+        let btn=document.createElement("button");
+        btn.innerText=colours[i];
+        btn.onclick=function(){
+            para.style.backgroundColor=colours[i];
+        }
+        btn.style.height="40px";
+        buttons.appendChild(btn);
+    }
+</script>
+</html>

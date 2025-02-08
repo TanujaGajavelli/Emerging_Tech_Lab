@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Person{
+        constructor(firstName,lastName,age){
+            this.firstName=firstName;
+            this.lastName=lastName;
+            this.age=age;
+        }
+        getFullName() {
+            return `${this.firstName} ${this.lastName}`
+        }
+        getDetails(){
+            return `Name:${this.getFullName()} Age:${this.age}`
+        }
+    }
+    let p1=new Person("Tanuja","Gajavelli",21);
+    let fullName=p1.getFullName();
+    console.log(fullName);
+    let details=p1.getDetails();
+    console.log(details);
+    
+</script>
+</html>

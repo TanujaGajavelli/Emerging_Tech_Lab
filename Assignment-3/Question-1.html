@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="no" placeholder="Enter any no">
+    <button type="submit" onclick="palin()" >Submit</button>
+</body>
+<script>
+    function palin(){
+        let no=document.getElementById("no").value;
+        let n=no.length;
+        for(let i=0;i<n/2;i++){
+            if(no[i]!==no[n-i-1]){
+                console.log("Not a pallindrome");
+                return;
+            }
+        }
+        console.log("Pallindrome");  
+    }
+</script>
+</html>

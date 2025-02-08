@@ -1,0 +1,47 @@
+<!--Name-Gajavelli Tanuja Sai SIC-22BCSI56-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #tasks{
+            gap:10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="todo">
+        <input type="text" id="task_to_add" placeholder="Task">
+        <input type="date" id="date_to_add">
+        <input type="time" id="time_to_add">
+        <button onclick=add()>Add Task</button>
+        <div id="tasks"></div>
+    </div>
+</body>
+<script>
+    let count=0
+    function add(){
+        count++;
+        let task=document.createElement("p");
+        task.innerHTML="Task "+count+": "+document.getElementById("task_to_add").value;
+        let date=document.createElement("span");
+        date.innerHTML=document.getElementById("date_to_add").value;        
+        let time=document.createElement("span");
+        time.innerHTML=document.getElementById("time_to_add").value;
+        let data=document.createElement("div");
+        let timeDate=document.createElement("div");
+        timeDate.appendChild(date);
+        timeDate.appendChild(time);
+        timeDate.style.gap="10px";
+        data.appendChild(task);
+        data.appendChild(timeDate);
+        data.style.border="1px solid black";
+        data.style.margin="10px";
+        data.style.padding="10px";
+        let tasks=document.getElementById("tasks");
+        tasks.appendChild(data);
+    }
+</script>
+</html>

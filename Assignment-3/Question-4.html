@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="count"></p>
+</body>
+<script>
+    function delayedGreeting(name,time){
+        setTimeout(function(){
+            console.log(`Hello ${name}`)},parseInt(time))
+    }
+    delayedGreeting("Tanuja",2000)
+    let x=10;
+    let interval=setInterval(function(){
+        let count=document.getElementById("count")
+        count.innerText=x;
+        x--;
+        if(x==0){
+            clearInterval(interval)
+        }
+    },1000)
+</script>
+</html>

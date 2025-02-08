@@ -1,0 +1,66 @@
+<!--Name-Gajavelli Tanuja Sai SIC-22BCSI56-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Work Experience</h2>
+    <div>
+        <input type="text" name="Organization" placeholder="Enter Organization">
+        <input type="text" name="Designation"  placeholder="Enter Designation">
+        <input type="text" name="Duration" placeholder="Enter Duration">
+        <div id="row"></div>
+        <button onclick="add()">Add More</button>
+    </div>
+    <button type="submit" onclick="print()">Submit</button>
+</body>
+<script>
+    function add(){
+        let org=document.createElement("input");
+        org.placeholder="Enter Organization";
+        org.name="Organization";
+        let des=document.createElement("input");
+        des.placeholder="Enter Designation";
+        des.name="Designation";
+        let dur=document.createElement("input");
+        dur.placeholder="Enter Duration";
+        dur.name="Duration";
+        org.style.margin="5px";
+        des.style.margin="10px";
+        dur.style.margin="5px";
+
+
+        let data=document.createElement("div");
+        data.appendChild(org);
+        data.appendChild(des);
+        data.appendChild(dur);
+        
+        let row=document.getElementById("row");
+        row.appendChild(data);
+
+    }
+    function print(){
+        let allData=[];
+        let Organization=document.getElementsByName("Organization");
+        let Designation=document.getElementsByName("Designation");
+        let Duration=document.getElementsByName("Duration");
+        for(let i=0;i<Organization.length;i++){
+            let data={};
+            data["Organization"]=Organization[i].value;
+            data["Designation"]=Designation[i].value;
+            data["Duration"]=Duration[i].value;
+            allData.push(data);
+        }
+        console.log(allData);
+        
+    }
+</script>
+</html>
