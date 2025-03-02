@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #products{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap:1rem;
+        }
+        img{
+            width:16rem;
+            height: 20rem;
+            padding:1rem ;
+        }
+        .card{
+            border: 1px solid black;
+            justify-items: center;
+        }
+        p,h4{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="products">
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    let url=`https://fakestoreapi.com/products`;
+    async function getProducts() {
+        try{
+            let res=await axios.get(url);
+            let products=res.data
+            displayProducts(products)
+        }
+        catch(err){
+            console.log(err);
+        }
+    } 
+    function displayProducts(products){
+        let card=document.getElementById("products")
+        products.forEach(product => {
+            let prod=document.createElement("div");
+            prod.className="card"
+            let image=document.createElement("img");
+            image.src=product.image;
+
+            let name=document.createElement("h4");
+            name.innerText=product.title;
+
+            let price=document.createElement("p");
+            price.innerHTML=`<p>Price: Rs${product.price}</p>`;
+
+            prod.appendChild(image)
+            prod.appendChild(name)
+            prod.appendChild(price)
+            card.appendChild(prod)
+        });
+    }
+    getProducts()
+</script>
+</html>

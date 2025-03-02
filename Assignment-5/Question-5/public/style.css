@@ -1,0 +1,13 @@
+h1{
+    text-align: center;
+    color: rgb(27, 15, 196);
+}
+body{
+    background-image: url('back.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+p{
+    color: rgb(67, 75, 222);
+    font-size: 24px;
+}

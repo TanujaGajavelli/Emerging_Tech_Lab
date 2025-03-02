@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            margin: 10px;
+            width: 90%;
+            height:30px;
+        }
+        form{
+            border: 2px solid black;
+            margin-left: 35%;
+            margin-right: 35%;
+            margin-top: 12%;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" onsubmit="updateStu(event)">
+        <input type="text" id="sid" placeholder="Enter your id">
+        <input type="text" id="name" placeholder="Enter your name">
+        <input type="text" id="branch" placeholder="Enter your branch">
+        <input type="text" id="cgpa" placeholder="Enter your cgpa">
+        <input type="submit" value="Update">
+        <p id="msg"></p>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        let urlParams=new URLSearchParams(window.location.search)
+        let id=urlParams.get("id");
+        let msg=document.getElementById("msg");
+        let url=`http://localhost:3000/students/${id}`   
+        async function updateStu(e){
+            e.preventDefault()
+            try {
+                let sid = document.getElementById("sid").value
+                let name = document.getElementById("name").value
+                let branch = document.getElementById("branch").value
+                let cgpa = document.getElementById("cgpa").value
+                let response = await axios.put(url, {"id": sid, "name": name, "branch": branch, "cgpa": cgpa})
+                console.log(response);
+                if(response.status === 201){
+                    document.getElementById("sid").value = "" 
+                    document.getElementById("name").value = ""
+                    document.getElementById("branch").value = ""
+                    document.getElementById("cgpa").value = ""
+                    msg.innerHTML = "Student Updated"
+
+                }
+            } catch (error) {
+                console.log(error);
+                msg.innerHTML = "Student Not Updated"
+            }
+            
+        }
+        async function getDetails(){
+            try {
+                let response = await axios.get(url)
+                let student = response.data
+                document.getElementById("sid").value = student.id
+                document.getElementById("name").value = student.name
+                document.getElementById("branch").value = student.branch
+                document.getElementById("cgpa").value = student.cgpa
+            
+            } catch (error) {
+                alert("Invalid Id")
+                window.location="Question-4b.html"
+            }
+        }
+        getDetails();
+    </script>
+</body>
+</html>

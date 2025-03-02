@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        let urlParams = new URLSearchParams(window.location.search)
+        let id = urlParams.get("id");
+        async function deleteStu(id){
+           try {
+                let url = "http://localhost:3000/students/"+id
+                let response = await axios.delete(url)
+                console.log(response);
+                if(response.status === 200){
+                    alert("Student Deleted")
+                    window.location = "Question-4b.html"
+                }
+           } catch (error) {
+            console.log(error);
+            alert("Student data not Deleted. Check Id.")
+            window.location = "Question-4b.html"
+           }
+        }
+        deleteStu(id)
+        
+    </script>
+</body>
+</html>

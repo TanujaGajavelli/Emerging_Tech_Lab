@@ -1,0 +1,34 @@
+{
+  "students": [
+    {
+      "id": "3",
+      "name": "Laya",
+      "branch": "ECE",
+      "cgpa": "9"
+    },
+    {
+      "id": "4",
+      "name": "Tanuja",
+      "branch": "CSE",
+      "cgpa": "8.97"
+    },
+    {
+      "id": "5",
+      "name": "Bhanu",
+      "branch": "ECE",
+      "cgpa": "8.5"
+    },
+    {
+      "id": "6",
+      "name": "Laya",
+      "branch": "ECE",
+      "cgpa": "9"
+    },
+    {
+      "id": "a4be",
+      "name": "Tanuja Gajavelli",
+      "branch": "CSE",
+      "cgpa": "8"
+    }
+  ]
+}

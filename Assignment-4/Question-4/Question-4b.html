@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .student{
+            padding: 10px;
+        }
+        #search{
+            width: 30%;
+            margin-left: 30%;
+            height: 30px;
+        }
+        #students{
+            margin-top: 5px;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap:10px;
+        }
+        .student{
+            border: 1px solid black;
+        }
+        a{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="search" placeholder="Search by name" oninput="filterStudents()">
+    <div id="students"></div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    let url = "http://localhost:3000/students";
+    let students=document.getElementById("students");
+    let studentData=[];
+    async function displayStudents(){
+        try{
+            let response = await axios.get(url)
+            studentData=response.data;
+            let students=document.getElementById("students")
+            if(response.status===200){
+                for(let i=0;i<studentData.length;i++){
+                    let student=document.createElement("div")
+                    let id=document.createElement("p")
+                    id.innerHTML=`Student id: ${studentData[i].id}`                    
+                    let name=document.createElement("p")
+                    name.innerHTML=`Student name: ${studentData[i].name}`
+                    let branch=document.createElement("p")
+                    branch.innerHTML=`Student branch: ${studentData[i].branch}`
+                    let cgpa=document.createElement("p")
+                    cgpa.innerHTML=`Student cgpa: ${studentData[i].cgpa}`
+
+                    let updateStu=document.createElement("a");
+                    updateStu.innerHTML="Update";
+                    updateStu.href=`Question-4cUpdate.html?id=${studentData[i].id}`;
+                    
+                    let deleteStu=document.createElement("a");
+                    deleteStu.innerHTML="Delete";
+                    deleteStu.href=`Question-4cDelete.html?id=${studentData[i].id}`;
+
+                    student.appendChild(id)
+                    student.appendChild(name)
+                    student.appendChild(branch)
+                    student.appendChild(cgpa)
+                    student.appendChild(updateStu)
+                    student.appendChild(deleteStu)
+                    student.className="student"
+                    students.appendChild(student)
+                }
+            }
+        }catch(err){
+            console.log(err);
+        }
+    }
+    function renderStudents(data) {
+            students.innerHTML = "";
+            data.forEach(student => {
+                let studentDiv = document.createElement("div");
+                studentDiv.innerHTML = `
+                    <p>Student id: ${student.id}</p>
+                    <p>Student name: ${student.name}</p>
+                    <p>Student branch: ${student.branch}</p>
+                    <p>Student cgpa: ${student.cgpa}</p>
+                    <a href="Question-4cUpdate.html?id=${student.id}">Update</a>
+                    <a href="Question-4cDelete.html?id=${student.id}">Delete</a>
+                `;
+                students.appendChild(studentDiv);
+            });
+        }
+    function filterStudents() {
+        let query = document.getElementById("search").value.toLowerCase();
+        let filteredData = studentData.filter(student => 
+            student.name.toLowerCase().includes(query)
+        );        
+        renderStudents(filteredData);
+    }
+    displayStudents()
+</script>
+</body>
+</html>

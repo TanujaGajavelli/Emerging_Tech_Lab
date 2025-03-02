@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    function checkPrime(num){
+        try{
+            return new Promise((resolve,reject)=>{
+                if(num==1){
+                    resolve(`Neither prime nor composite`)
+                }
+                for(let i=2;i<Math.ceil(num/2);i++){
+                    if(num%i==0){
+                        reject(`${num} is not a prime number`)
+                    }
+                }
+                resolve(`${num} is a prime number`)
+            })
+        }
+        catch(err){
+            console.log(err);  
+        } 
+    }
+    async function generateRandom() {
+        try{
+            let num=parseInt(Math.random()*100);
+            console.log(`The number is ${num}`);
+            let res=await checkPrime(num);
+            console.log(res);
+        }
+        catch(err){
+            console.log(err); 
+        }
+
+    }
+setTimeout(()=>{
+    generateRandom()
+},3000)
+
+</script>
+</html>

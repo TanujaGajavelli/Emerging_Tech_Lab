@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            margin: 10px;
+            width: 90%;
+            height:30px;
+        }
+        form{
+            border: 2px solid black;
+            margin-left: 35%;
+            margin-right: 35%;
+            margin-top: 12%;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post" onsubmit="addStudent(event)">
+        <input type="name" id="name" placeholder="Enter your name">
+        <input type="branch" id="branch" placeholder="Enter your branch">
+        <input type="cgpa" id="cgpa" placeholder="Enter your CGPA">
+        <input type="submit" value="Add Student">
+    </form>
+    <p id="msg"></p>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    let url = "http://localhost:3000/students";
+    let msg=document.getElementById("msg");
+    async function addStudent(e){
+        e.preventDefault()
+        try{
+            let name=document.getElementById("name").value;
+            let branch=document.getElementById("branch").value;
+            let cgpa=document.getElementById("cgpa").value;
+            let response = await axios.post(url, {"name": name, "branch": branch, "cgpa":cgpa})
+            if(response.status==201){
+                msg.innerHTML="Student data added"
+                document.getElementById("name").value = "" 
+                document.getElementById("branch").value = "" 
+                document.getElementById("cgpa").value = "" 
+            }
+        }catch(err){
+            console.log(err);
+            msg.innerHTML="Student data not added"
+        }
+    }
+</script>
+</body>
+</html>
